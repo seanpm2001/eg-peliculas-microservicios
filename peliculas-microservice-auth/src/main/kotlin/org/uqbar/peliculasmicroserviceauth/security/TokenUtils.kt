@@ -28,9 +28,9 @@ class TokenUtils {
       val now = Date()
 
       return Jwts.builder()
-         .setSubject(nombre)
-         .setIssuedAt(now)
-         .setExpiration(Date(now.time + longExpirationTime))
+         .subject(nombre)
+         .issuedAt(now)
+         .expiration(Date(now.time + longExpirationTime))
          .claim("roles", if (nombre == "admin") "ROLE_ADMIN" else "ROLE_USER")
          .signWith(Keys.hmacShaKeyFor(secretKey.toByteArray()))
          .compact()
